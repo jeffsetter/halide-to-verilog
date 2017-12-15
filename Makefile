@@ -11,7 +11,7 @@ all:
 	make build/conv_bw_compare SIZE="64,64" CULL="2,64,2,64" 
 
 ${HALIDE_PATH}:
-	git clone ${HALIDE_REPO} -b coreir_sim ${HALIDE_PATH}
+	git clone ${HALIDE_REPO} ${HALIDE_PATH}
 
 ${COREIR_PATH}:
 	git clone ${COREIR_REPO} -b dev ${COREIR_PATH}
@@ -25,8 +25,7 @@ install:
 	${MAKE} ${HALIDE_PATH}
 	${MAKE} ${COREIR_PATH}
 	${MAKE} crop
-
-	setenv LD_LIBRARY_PATH $PWD/coreir/lib:$LD_LIBRARY_PATH
+	source setenv.sh
 
 # Run halide to produce coreir json and halide cpu output image
 .PRECIOUS: build/%_design_prepass.json build/%_input.png build/%_halide_output.png
