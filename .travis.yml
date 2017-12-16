@@ -1,0 +1,45 @@
+language: c
+dist: trusty
+sudo: required
+
+env:
+  global:
+
+cache:
+  apt: true
+  directories:
+
+compiler:
+  - gcc
+
+before_install:
+
+install:
+  - source ./install.sh
+
+script:
+  # "set -e" means "die at first error"
+  - set -e
+  mkdir -p build
+
+  # For verbose output add "SILENT=FALSE" to command line(s) below
+  - make build/conv_1_2_compare SIZE="10,10" CULL="0,10,1,10"
+  - make build/conv_3_1_compare SIZE="10,10" CULL="2,10,0,10"
+  - make build/conv_bw_compare SIZE="64,64" CULL="2,64,2,64" 
+
+
+after_failure:
+  # If the log file is getting very long and unwieldy,
+  #  see https://docs.travis-ci.com/user/customizing-the-build/
+
+
+after_script:
+
+notifications:
+  slack:
+    secure: 
+
+addons:
+  apt:
+    sources:
+    packages:

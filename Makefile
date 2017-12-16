@@ -1,12 +1,9 @@
-COREIR_REPO ?= https://github.com/rdaly525/coreir.git
-HALIDE_REPO ?= https://github.com/jeffsetter/Halide_CoreIR.git
-
 HALIDE_PATH = Halide_CoreIR
 COREIR_PATH = coreir
 
 all:
 	mkdir -p build
-	make build/conv_1_2_compare SIZE="10,10" CULL="0,10,1,10"
+#	make build/conv_1_2_compare SIZE="10,10" CULL="0,10,1,10"
 	make build/conv_3_1_compare SIZE="10,10" CULL="2,10,0,10"
 	make build/conv_bw_compare SIZE="64,64" CULL="2,64,2,64" 
 
