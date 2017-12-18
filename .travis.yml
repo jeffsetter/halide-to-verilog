@@ -22,7 +22,7 @@ install:
 script:
   # "set -e" means "die at first error"
   - set -e
-  mkdir -p build
+  - mkdir -p build
 
   # For verbose output add "SILENT=FALSE" to command line(s) below
   - make build/conv_1_2_compare SIZE="10,10" CULL="0,10,1,10"
@@ -36,12 +36,3 @@ after_failure:
 
 
 after_script:
-
-notifications:
-  slack:
-    secure: 
-
-addons:
-  apt:
-    sources:
-    packages:
