@@ -24,6 +24,9 @@ install:
 	${MAKE} crop
 	source setenv.sh
 
+clonerepos:
+	source clonerepos.sh
+
 # Run halide to produce coreir json and halide cpu output image
 .PRECIOUS: build/%_design_prepass.json build/%_input.png build/%_halide_output.png
 build/%_design_prepass.json build/%_input.png build/%_halide_output.png: ${HALIDE_PATH}/apps/coreir_examples/% 
