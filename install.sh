@@ -35,7 +35,8 @@ Halide_CoreIR/test/scripts/install_travis.sh
 
 #coreir
 export COREIRCONFIG="g++-4.9";
-make -C ${COREIR_PATH} -j12 build install
+make -C ${COREIR_PATH} -j12 build
+sudo make -C ${COREIR_PATH} install
 make -C ${COREIR_PATH}/tools/crop
 
 # set some environment variables
