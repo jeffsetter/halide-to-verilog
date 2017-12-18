@@ -17,7 +17,7 @@ export HALIDE_REPO="https://github.com/jeffsetter/Halide_CoreIR.git"
 export COREIR_REPO="https://github.com/rdaly525/coreir.git"
 
 export HALIDE_BRANCH="master"
-export COREIR_BRANCH="master"
+export COREIR_BRANCH="verilog_tb"
 
 export HALIDE_PATH="Halide_CoreIR"
 export COREIR_PATH="coreir"
