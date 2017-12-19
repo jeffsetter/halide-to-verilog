@@ -14,7 +14,7 @@ install:
 .PRECIOUS: build/%_design_prepass.json build/%_input.png build/%_halide_output.png
 build/%_design_prepass.json build/%_input.png build/%_halide_output.png: #${HALIDE_PATH}/apps/coreir_examples/% 
         # remake the json and cpu output image for our test app
-	@echo; echo Making $@ because of $?
+	@echo -e "\033[0;32mStarting $* example in Halide \033[0m"
         # E.g. '$*' = "pointwise" when building "build/pointwise/correct.txt"
 	make -C ${HALIDE_PATH}/apps/coreir_examples/$*/ clean design_top.json out.png $(SILENT_FILTER_HF)
 
