@@ -1,5 +1,5 @@
-HALIDE_PATH = Halide_CoreIR
-COREIR_PATH = coreir
+HALIDE_PATH ?= Halide_CoreIR
+COREIR_PATH ?= coreir
 
 all:
 	mkdir -p build
@@ -7,25 +7,8 @@ all:
 	make build/conv_3_1_compare SIZE="10,10" CULL="2,10,0,10"
 	make build/conv_bw_compare SIZE="64,64" CULL="2,64,2,64" 
 
-${HALIDE_PATH}:
-	git clone ${HALIDE_REPO} ${HALIDE_PATH}
-
-${COREIR_PATH}:
-	git clone ${COREIR_REPO} -b dev ${COREIR_PATH}
-	${MAKE} -C ${COREIR_PATH}
-crop: ${COREIR_PATH}
-	${MAKE} -C ${COREIR_PATH}/tools/crop
-
-#REMEMBER TO SET LD_LIBRARY_PATH
-# setenv LD_LIBRARY_PATH $PWD/coreir/lib:$LD_LIBRARY_PATH
 install:
-	${MAKE} ${HALIDE_PATH}
-	${MAKE} ${COREIR_PATH}
-	${MAKE} crop
-	source setenv.sh
-
-clonerepos:
-	source clonerepos.sh
+	@echo "Please run: source clonerepos.sh"
 
 # Run halide to produce coreir json and halide cpu output image
 .PRECIOUS: build/%_design_prepass.json build/%_input.png build/%_halide_output.png
