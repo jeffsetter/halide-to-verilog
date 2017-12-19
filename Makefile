@@ -12,7 +12,7 @@ install:
 
 # Run halide to produce coreir json and halide cpu output image
 .PRECIOUS: build/%_design_prepass.json build/%_input.png build/%_halide_output.png
-build/%_design_prepass.json build/%_input.png build/%_halide_output.png: ${HALIDE_PATH}/apps/coreir_examples/% 
+build/%_design_prepass.json build/%_input.png build/%_halide_output.png: #${HALIDE_PATH}/apps/coreir_examples/% 
         # remake the json and cpu output image for our test app
 	@echo; echo Making $@ because of $?
         # E.g. '$*' = "pointwise" when building "build/pointwise/correct.txt"
@@ -59,7 +59,7 @@ build/%_verilog_output_uncropped.raw: build/%_input.raw build/%_top.v
 #   crop use defined by CULL="y_start,y_end,x_start,x_end"
 #   example use: make build/conv_bw_verilog_output.raw SIZE="64,64" CULL="2,64,2,64"
 .PRECIOUS: build/%_verilog_output.raw
-build/%_verilog_output.raw: build/%_verilog_output_uncropped.raw crop
+build/%_verilog_output.raw: build/%_verilog_output_uncropped.raw
 	./${COREIR_PATH}/bin/crop -i build/$*_verilog_output_uncropped.raw -o build/$*_verilog_output.raw -s ${SIZE} -c ${CULL}
 
 # compare the halide and verilog generated outputs
